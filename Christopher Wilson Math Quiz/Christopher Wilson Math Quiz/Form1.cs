@@ -47,6 +47,13 @@ namespace Christopher_Wilson_Math_Quiz
         /// </summary>
         public void StartTheQuiz()
         {
+            // Reset colors
+            sum.BackColor = Color.White;
+            difference.BackColor = Color.White;
+            product.BackColor = Color.White;
+            quotient.BackColor = Color.White;
+            timeLabel.BackColor = Color.White;
+
             // Fill in the addition problem.
             // Generate two random numbers to add.
             // Store the values in the variables 'addend1' and 'addend2'.
@@ -100,11 +107,6 @@ namespace Christopher_Wilson_Math_Quiz
         private void Form1_Load(object sender, EventArgs e)
         {
             dateLabel.Text = date;
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -178,6 +180,54 @@ namespace Christopher_Wilson_Math_Quiz
             {
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfAnswer);
+            }
+        }
+
+        // If the answer is right, make it green, else make it red
+        private void checkAdd_Click(object sender, EventArgs e)
+        {
+            if (addend1 + addend2 == sum.Value)
+            {
+                sum.BackColor = Color.Green;
+            } else
+            {
+                sum.BackColor = Color.Red;
+            }
+        }
+
+        private void checkMinus_Click(object sender, EventArgs e)
+        {
+            if (minuend - subtrahend == difference.Value)
+            {
+                difference.BackColor = Color.Green;
+            }
+            else
+            {
+                difference.BackColor = Color.Red;
+            }
+        }
+
+        private void checkTimes_Click(object sender, EventArgs e)
+        {
+            if (multiplicand * multiplier == product.Value)
+            {
+                product.BackColor = Color.Green;
+            }
+            else
+            {
+                product.BackColor = Color.Red;
+            }
+        }
+
+        private void checkDivide_Click(object sender, EventArgs e)
+        {
+            if (dividend / divisor == quotient.Value)
+            {
+                quotient.BackColor = Color.Green;
+            }
+            else
+            {
+                quotient.BackColor = Color.Red;
             }
         }
     }
