@@ -41,7 +41,7 @@
             this.btnDisplayQuote.Location = new System.Drawing.Point(48, 98);
             this.btnDisplayQuote.Name = "btnDisplayQuote";
             this.btnDisplayQuote.Size = new System.Drawing.Size(146, 54);
-            this.btnDisplayQuote.TabIndex = 0;
+            this.btnDisplayQuote.TabIndex = 2;
             this.btnDisplayQuote.Text = "Display Quote";
             this.btnDisplayQuote.UseVisualStyleBackColor = true;
             this.btnDisplayQuote.Click += new System.EventHandler(this.btnDisplayQuote_Click);
@@ -52,7 +52,7 @@
             this.btnViewQuotes.Location = new System.Drawing.Point(48, 158);
             this.btnViewQuotes.Name = "btnViewQuotes";
             this.btnViewQuotes.Size = new System.Drawing.Size(146, 49);
-            this.btnViewQuotes.TabIndex = 1;
+            this.btnViewQuotes.TabIndex = 3;
             this.btnViewQuotes.Text = "View Quotes";
             this.btnViewQuotes.UseVisualStyleBackColor = true;
             this.btnViewQuotes.Click += new System.EventHandler(this.btnViewQuotes_Click);
@@ -63,7 +63,7 @@
             this.btnSearchQuotes.Location = new System.Drawing.Point(48, 213);
             this.btnSearchQuotes.Name = "btnSearchQuotes";
             this.btnSearchQuotes.Size = new System.Drawing.Size(146, 49);
-            this.btnSearchQuotes.TabIndex = 2;
+            this.btnSearchQuotes.TabIndex = 4;
             this.btnSearchQuotes.Text = "Search Quotes";
             this.btnSearchQuotes.UseVisualStyleBackColor = true;
             this.btnSearchQuotes.Click += new System.EventHandler(this.btnSearchQuotes_Click);
@@ -74,7 +74,7 @@
             this.btnExit.Location = new System.Drawing.Point(48, 268);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(146, 49);
-            this.btnExit.TabIndex = 3;
+            this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -85,7 +85,7 @@
             this.btnAddQuote.Location = new System.Drawing.Point(48, 38);
             this.btnAddQuote.Name = "btnAddQuote";
             this.btnAddQuote.Size = new System.Drawing.Size(146, 54);
-            this.btnAddQuote.TabIndex = 4;
+            this.btnAddQuote.TabIndex = 1;
             this.btnAddQuote.Text = "Add New Quote";
             this.btnAddQuote.UseVisualStyleBackColor = true;
             this.btnAddQuote.Click += new System.EventHandler(this.btnAddQuote_Click);

@@ -15,6 +15,20 @@ namespace MegaDesk_Wilson
         public ViewAllQuotes(ref Form caller)
         {
             InitializeComponent();
+            this.Caller = caller;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Caller.Show();
+            this.Close();
+        }
+
+        public Form Caller { get; }
+
+        private void ViewAllQuotes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Caller.Show();
         }
     }
 }

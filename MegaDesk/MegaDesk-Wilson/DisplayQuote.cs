@@ -18,18 +18,18 @@ namespace MegaDesk_Wilson
             this.Caller = Caller;
         }
 
+
+        private Form Caller;
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //Caller.Show();
-            //this.Close();
+            Caller.Show();
+            this.Close();
         }
 
-        private void DisplayQuote_Load(object sender, EventArgs e)
+        private void DisplayQuote_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //Caller.Show();
-            //this.Close();
+            Caller.Show();
         }
-
-        private Form Caller; 
     }
 }

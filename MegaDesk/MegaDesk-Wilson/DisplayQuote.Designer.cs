@@ -33,10 +33,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(200, 300);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(190, 265);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Size = new System.Drawing.Size(75, 28);
+            this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -49,13 +50,12 @@
             this.Controls.Add(this.btnCancel);
             this.Name = "DisplayQuote";
             this.Text = "MegaDesk";
-            this.Load += new System.EventHandler(this.DisplayQuote_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DisplayQuote_FormClosed);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
         private System.Windows.Forms.Button btnCancel;
     }
 }
