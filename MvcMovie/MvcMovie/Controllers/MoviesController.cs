@@ -38,10 +38,10 @@ namespace MvcMovie.Controllers
             switch (sortOrder)
             {
                 case "Date":
-                    movies = movies.OrderBy(m => m.Rating);
+                    movies = movies.OrderBy(m => m.ReleaseDate);
                     break;
                 case "date_desc":
-                    movies = movies.OrderByDescending(m => m.Rating);
+                    movies = movies.OrderByDescending(m => m.ReleaseDate);
                     break;
             }
 
