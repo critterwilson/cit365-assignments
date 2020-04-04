@@ -55,7 +55,7 @@ namespace SacramentMeeting.Models
         public Hymn OpeningHymn { get; set; }
         public Member OpeningPrayer { get; set; }
         public Hymn SacramentHymn { get; set; }
-        public Hymn IntermediateHymn { get; set; }
+        public Hymn? IntermediateHymn { get; set; }
         public Hymn ClosingHymn { get; set; }
         public Member ClosingPrayer { get; set; }
 

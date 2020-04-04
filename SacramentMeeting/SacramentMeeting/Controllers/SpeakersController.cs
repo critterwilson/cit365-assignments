@@ -22,7 +22,9 @@ namespace SacramentMeeting.Controllers
         // GET: Speakers
         public async Task<IActionResult> Index()
         {
-            var sacramentContext = _context.Speaker.Include(s => s.Meeting).Include(s => s.Member);
+            var sacramentContext = _context.Speaker
+                .Include(s => s.Meeting)
+                .Include(s => s.Member);
             return View(await sacramentContext.ToListAsync());
         }
 
@@ -50,7 +52,7 @@ namespace SacramentMeeting.Controllers
         public IActionResult Create()
         {
             ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "MeetingIdentifier");
-            ViewData["MemberID"] = new SelectList(_context.Member, "ID", "FirstName");
+            ViewData["MemberID"] = new SelectList(_context.Member, "ID", "FullName");
             return View();
         }
 
@@ -85,8 +87,8 @@ namespace SacramentMeeting.Controllers
             {
                 return NotFound();
             }
-            ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speaker.MeetingID);
-            ViewData["MemberID"] = new SelectList(_context.Member, "ID", "FirstName", speaker.MemberID);
+            ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "MeetingIdentifier", speaker.MeetingID);
+            ViewData["MemberID"] = new SelectList(_context.Member, "ID", "FullName", speaker.MemberID);
             return View(speaker);
         }
 
@@ -122,8 +124,9 @@ namespace SacramentMeeting.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["MeetingID"] = new SelectList(_context.Meeting, "ID", "ID", speaker.MeetingID);
-            ViewData["MemberID"] = new SelectList(_context.Member, "ID", "FirstName", speaker.MemberID);
+            ViewData["MemberID"] = new SelectList(_context.Member, "ID", "FullName", speaker.MemberID);
             return View(speaker);
         }
 

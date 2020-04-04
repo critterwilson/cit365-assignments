@@ -4,72 +4,93 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Meeting Details</h1>
+<h4>for (@Model.MeetingIdentifier)</h4>
 
 <div>
-    <h4>Meeting</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingDate)
+            Meeting Date
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MeetingDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Conducting)
+            Conducting
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Conducting.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.OpeningHymn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.OpeningHymn.ID)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.OpeningPrayer)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.OpeningPrayer.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SacramentHymn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SacramentHymn.ID)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IntermediateHymn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IntermediateHymn.ID)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ClosingHymn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ClosingHymn.ID)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ClosingPrayer)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ClosingPrayer.FirstName)
+            @Html.DisplayFor(model => model.Conducting.FullName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Speakers)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Speakers)
+            @{
+                if (Model.Speakers.Count() != 0)
+                {
+                    foreach (var speaker in Model.Speakers)
+                    {
+                        <a asp-controller="Speakers" asp-action="Details" asp-route-id="@speaker.ID">
+                            @speaker.Member.FullName
+                            :
+                            @speaker.Topic <br />
+                        </a>
+                    }
+                }
+                else
+                {
+                    @:No Speakers
+                }
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Opening Hymn
+        </dt>
+        <dd class="col-sm-10">
+            #@Html.DisplayFor(model => model.OpeningHymn.ID): @Html.DisplayFor(model => model.OpeningHymn.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Opening Prayer
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OpeningPrayer.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            Sacrament Hymn
+        </dt>
+        <dd class="col-sm-10">
+            #@Html.DisplayFor(model => model.SacramentHymn.ID): @Html.DisplayFor(model => model.SacramentHymn.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Intermediate Hymn
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.IntermediateHymnID == null)
+            {
+                @:No Intermediate Hymn
+            }
+            else
+            {
+                @:#@Html.DisplayFor(model => model.IntermediateHymn.ID): @Html.DisplayFor(model => model.IntermediateHymn.Title)
+            }
+
+        </dd>
+        <dt class="col-sm-2">
+            Closing Hymn
+        </dt>
+        <dd class="col-sm-10">
+            #@Html.DisplayFor(model => model.ClosingHymn.ID): @Html.DisplayFor(model => model.ClosingHymn.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Closing Prayer
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ClosingPrayer.FullName)
         </dd>
     </dl>
 </div>
-<div class="form-group">
-    <a asp-controller="Speakers" asp-action="Create" class="btn btn-primary">Add Speakers</a>
-</div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Meetings</a> |
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit Details</a>
 </div>

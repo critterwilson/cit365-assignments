@@ -29,7 +29,9 @@ namespace SacramentMeeting.Controllers
                 .Include(m => m.IntermediateHymn)
                 .Include(m => m.OpeningHymn)
                 .Include(m => m.OpeningPrayer)
-                .Include(m => m.SacramentHymn);
+                .Include(m => m.SacramentHymn)
+                .Include(m => m.Speakers)
+                    .ThenInclude(m => m.Member);
             
             return View(await sacramentContext.ToListAsync());
         }
@@ -50,7 +52,10 @@ namespace SacramentMeeting.Controllers
                 .Include(m => m.OpeningHymn)
                 .Include(m => m.OpeningPrayer)
                 .Include(m => m.SacramentHymn)
+                .Include(m => m.Speakers)
+                    .ThenInclude(m => m.Member)
                 .FirstOrDefaultAsync(m => m.ID == id);
+
             if (meeting == null)
             {
                 return NotFound();
@@ -62,13 +67,13 @@ namespace SacramentMeeting.Controllers
         // GET: Meetings/Create
         public IActionResult Create()
         {
-            ViewData["ClosingHymnID"] = new SelectList(_context.Hymn, "ID", "ID");
-            ViewData["ClosingPrayerID"] = new SelectList(_context.Member, "ID", "FirstName");
-            ViewData["ConductingID"] = new SelectList(_context.Member, "ID", "FirstName");
-            ViewData["IntermediateHymnID"] = new SelectList(_context.Hymn, "ID", "ID");
-            ViewData["OpeningHymnID"] = new SelectList(_context.Hymn, "ID", "ID");
-            ViewData["OpeningPrayerID"] = new SelectList(_context.Member, "ID", "FirstName");
-            ViewData["SacramentHymnID"] = new SelectList(_context.Hymn, "ID", "ID");
+            ViewData["ClosingHymnID"] = new SelectList(_context.Hymn, "ID", "Title");
+            ViewData["ClosingPrayerID"] = new SelectList(_context.Member, "ID", "FullName");
+            ViewData["ConductingID"] = new SelectList(_context.Member, "ID", "FullName");
+            ViewData["IntermediateHymnID"] = new SelectList(_context.Hymn, "ID", "Title");
+            ViewData["OpeningHymnID"] = new SelectList(_context.Hymn, "ID", "Title");
+            ViewData["OpeningPrayerID"] = new SelectList(_context.Member, "ID", "FullName");
+            ViewData["SacramentHymnID"] = new SelectList(_context.Hymn, "ID", "Title");
             return View();
         }
 
